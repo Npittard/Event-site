@@ -29,26 +29,34 @@ import { EVENTS } from '../event-list/eventObjects';
 export class FiltersFormComponent implements OnInit {
   filters = FILTERS;
   events = EVENTS;
+  storedFilters:any[] = []
+  storedEvents:any[] = []
   constructor() { }
 
   toggleChecked(btn: any){
-    var getFilter = btn.id
-    console.log(getFilter)
-    var clickedFilter = document.querySelector(`#${getFilter}`)
+    let filterList = document.querySelectorAll("input[type='checkbox']")
+    let getFilter = btn.id
+    let clickedFilter = document.querySelector(`#${getFilter}`)
+    
     clickedFilter?.toggleAttribute('checked')
+    
+    let enabledFilters:any[] = [];
+    filterList.forEach(item => {
+      if (item.hasAttribute('checked')){
+        enabledFilters.indexOf(item.id) === -1 ? enabledFilters.push(item.id) : console.log("This item already exists");
+      }
+    });
+    console.log(enabledFilters)
+    this.storedFilters = enabledFilters
   }
 
   filterChecked(){
-    var filterList = document.querySelectorAll("input[type='checkbox']");
-    filterList.forEach(item => { 
-      if (item.hasAttribute('checked')){
-      //   return item
-      // } else{
-      //   return false
-      };
-    });
+      var event = this.events
+      event.forEach(item => {
+        console.log(item.filters)
+      });
   }
- 
+  
 
   ngOnInit(): void {
 
