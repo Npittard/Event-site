@@ -4,27 +4,38 @@ export const EVENTS: Events[] = [
 
     {   id: 1,
         activityName: 'Stone Brewing',
-        filters: [ 
+        display: false,
+        tags: [ 
             'Drinks',
             'Food',
-            'Family Friendly',
-    ]
+            'FamilyFriendly',
+            'Music'
+        ]
     },
     {   id: 2,
         activityName: 'Maymont Park',
-        filters:[
+        display: false,
+        tags:[
             'Outdoor',
-            'Family Friendly',
+            'FamilyFriendly',
             'Educational',
         ]
     },
     {   id: 3,
         activityName: 'The Boathouse',
-        filters:[
+        display: false,
+        tags:[
             'Drinks',
             'Food',
             'Outdoor',
-            'Family Friendly',
+            'FamilyFriendly',
+        ]
+    },
+    {   id: 4,
+        activityName: 'Hollywood Cemetary',
+        display: false,
+        tags:[
+            'History',
         ]
     }
 ]

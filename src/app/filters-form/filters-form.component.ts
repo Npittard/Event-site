@@ -15,48 +15,50 @@ import { EVENTS } from '../event-list/eventObjects';
           <input id="{{filter.id}}" type="checkbox" class="checkbox" (click)="toggleChecked(this.filter)">
       </li>
     </ul>
-    <button type="button" (click)="filterChecked()">Submit</button>
+    <button (click)="getEvent()">Submit</button>
   </form>
   <div class="eventsContainer">
   <ul class="eventList">
     <ng-container *ngFor="let event of events">
-      <li class="eventItem">{{event.activityName}}</li>   
+      <li class="eventItem" *ngIf="event.display === true">{{event.activityName}}</li>   
     </ng-container>
   </ul>
 </div>
   `
 })
+
 export class FiltersFormComponent implements OnInit {
   filters = FILTERS;
   events = EVENTS;
-  storedFilters:any[] = []
-  storedEvents:any[] = []
+  storedFilters:any=[]
   constructor() { }
 
   toggleChecked(btn: any){
-    let filterList = document.querySelectorAll("input[type='checkbox']")
     let getFilter = btn.id
     let clickedFilter = document.querySelector(`#${getFilter}`)
-    
-    clickedFilter?.toggleAttribute('checked')
-    
-    let enabledFilters:any[] = [];
-    filterList.forEach(item => {
-      if (item.hasAttribute('checked')){
-        enabledFilters.indexOf(item.id) === -1 ? enabledFilters.push(item.id) : console.log("This item already exists");
+    if(clickedFilter?.hasAttribute('checked')){
+      this.storedFilters.pop(getFilter)
+      clickedFilter?.toggleAttribute('checked')
+    }else{
+      this.storedFilters.push(getFilter)
+      clickedFilter?.toggleAttribute('checked')
+    }
+    return (this.storedFilters)
+  }
+  getEvent(){
+    // for each object
+    for (let i = 0; i< this.events.length; i++){
+      this.events[i].display = false;
+      // for each object filter array
+      for (let j = 0; j< this.events[i].tags.length; j++){
+        // if tags are in stored filters
+        if (this.storedFilters.includes(this.events[i].tags[j]) == true){
+          // change display to true
+          this.events[i].display = true;
+        }
       }
-    });
-    console.log(enabledFilters)
-    this.storedFilters = enabledFilters
+    }
   }
-
-  filterChecked(){
-      var event = this.events
-      event.forEach(item => {
-        console.log(item.filters)
-      });
-  }
-  
 
   ngOnInit(): void {
 
