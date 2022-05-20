@@ -11,19 +11,21 @@ import { EVENTS } from './eventObjects';
   <form class="formContainer">
     <ul class="filtersList">
       <li class="filterItem" *ngFor="let filter of filters">
-          <label for="{{filter.filterType}}">{{filter.filterType}}</label>
-          <input id="{{filter.id}}" type="checkbox" class="checkbox" (click)="toggleChecked(this.filter)">
+          <label for="{{filter.filterType}}" class="inputLabel">{{filter.filterType}}</label>
+          <input id="{{filter.id}}" type="checkbox" class="checkBox" (click)="toggleChecked(this.filter)">
       </li>
     </ul>
-    <button (click)="getEvent()">Submit</button>
   </form>
+  <div class="searchContainer">
+    <button (click)="getEvent()" class="searchBtn">Search</button>
+  </div>
   <div class="eventsContainer">
-  <ul class="eventList">
-    <ng-container *ngFor="let event of events">
-      <li class="eventItem" *ngIf="event.display === true">{{event.activityName}}</li>   
-    </ng-container>
-  </ul>
-</div>
+    <ul class="eventList">
+      <ng-container *ngFor="let event of events">
+        <li class="eventItem" *ngIf="event.display === true"><h2 class="eventName">{{event.activityName}}</h2></li>   
+      </ng-container>
+    </ul>
+  </div>
   `
 })
 

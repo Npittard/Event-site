@@ -1,0 +1,64 @@
+
+*{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-size: .85rem;
+}
+
+.formContainer{
+
+}
+
+.filtersList{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    list-style: none;
+    padding: 0;
+    flex-wrap: wrap;
+    margin:0;
+}
+
+.inputLabel{
+    text-align: center;
+    word-wrap: normal;  
+    margin-right: .2rem;  
+}
+
+.filterItem{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+    min-width: 11.11%;
+    padding: .3rem;
+}
+
+.checkBox{
+}
+
+.searchContainer{
+    display: flex;
+    justify-content: center;
+    margin-top: 1rem;
+}
+
+.searchBtn{
+    padding: 0;
+    margin: 0;
+}
+
+.eventsContainer{
+    margin: 5% 25%;
+}
+
+.eventList{
+    display: flex;
+    list-style: none;
+    flex-direction: column; 
+    align-items: center;
+}
+
+.eventItem{
+}
