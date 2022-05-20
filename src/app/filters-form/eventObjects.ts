@@ -37,5 +37,5 @@ export const EVENTS: Events[] = [
         tags:[
             'History',
         ]
-    }
+    },
 ]

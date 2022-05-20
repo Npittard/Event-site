@@ -1,6 +1,6 @@
 import { Component, OnInit, Output } from '@angular/core';
 import { FILTERS} from './filters';
-import { EVENTS } from '../event-list/eventObjects';
+import { EVENTS } from './eventObjects';
 
 
 @Component({
